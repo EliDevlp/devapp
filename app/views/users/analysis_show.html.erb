@@ -6,24 +6,27 @@ number 2:  <b><%= @analysis.num2 %></b><br>
 result:  <b><%= calculate(@analysis.num1, @analysis.num2) %></b><br>
 
 
-result:  <b><%= calculate(@bins.find_by(colour: "blue").quantity, @bins.find_by(colour: "red").quantity) %></b>
 <h2>bins</h2>
 
 <table>
   <thead>
   <tr>
-    <th>Colour</th>
-    <th>Quantity</th>
+    <th>Dwelling type</th>
+    <th>No. dwellings</th>
+    <th>Floor area</th>
+    <th>Price per unit area</th>
     <th colspan="3"></th>
   </tr>
   </thead>
 
   <tbody>
-  <% @bins.each do |bin| %>
+  <% @units.each do |bin| %>
     <tr>
-      <td><%= bin.colour %></td>
-      <td><%= bin.quantity %></td>
-      <td><%= link_to 'Edit', edit_user_bin_path(@user, bin) %></td>
+      <td><%= bin.dwelling_type %></td>
+      <td><%= bin.number_of_dwellings %></td>
+      <td><%= bin.floor_area %></td>
+      <td><%= bin.price_per_unit_area %></td>
+      <td><%= link_to 'Edit', edit_user_unit_path(@user, bin) %></td>
       <td><%= link_to 'Destroy', '#' %></td>
     </tr>
   <% end %>
@@ -31,5 +34,5 @@ result:  <b><%= calculate(@bins.find_by(colour: "blue").quantity, @bins.find_by(
 </table>
 
 
-
+<%= link_to "new", new_user_unit_path%>
 <%= link_to "Edit", user_analysis_edit_path %>

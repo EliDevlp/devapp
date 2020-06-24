@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_one :analysis, dependent: :destroy
-  has_many :bins
+  has_many :units
 
   before_save {self.email = email.downcase}
 

@@ -1,4 +1,4 @@
-#!/usr/bins/env ruby
+#!/usr/units/env ruby
 require 'fileutils'
 include FileUtils
 
@@ -18,7 +18,7 @@ chdir APP_ROOT do
   system('bundle check') || system!('bundle install')
 
   # Install JavaScript dependencies if using Yarn
-  # system('bins/yarn')
+  # system('units/yarn')
 
   # puts "\n== Copying sample files =="
   # unless File.exist?('config/database.yml')
@@ -26,11 +26,11 @@ chdir APP_ROOT do
   # end
 
   puts "\n== Preparing database =="
-  system! 'bins/rails db:setup'
+  system! 'units/rails db:setup'
 
   puts "\n== Removing old logs and tempfiles =="
-  system! 'bins/rails log:clear tmp:clear'
+  system! 'units/rails log:clear tmp:clear'
 
   puts "\n== Restarting application server =="
-  system! 'bins/rails restart'
+  system! 'units/rails restart'
 end

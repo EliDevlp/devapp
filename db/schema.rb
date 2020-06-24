@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_182144) do
+ActiveRecord::Schema.define(version: 2020_06_24_153519) do
 
   create_table "analyses", force: :cascade do |t|
     t.integer "num1"
@@ -21,13 +21,15 @@ ActiveRecord::Schema.define(version: 2020_06_23_182144) do
     t.index ["user_id"], name: "index_analyses_on_user_id"
   end
 
-  create_table "bins", force: :cascade do |t|
-    t.string "colour"
-    t.integer "quantity"
+  create_table "units", force: :cascade do |t|
+    t.string "dwelling_type"
+    t.integer "floor_area"
+    t.integer "number_of_dwellings"
+    t.integer "price_per_unit_area"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_bins_on_user_id"
+    t.index ["user_id"], name: "index_units_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

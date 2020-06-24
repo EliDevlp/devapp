@@ -1,5 +1,5 @@
 class AnalysesController < ApplicationController
-  before_action :set_analysis, only: [:show, :edit, :update, :destroy]
+  before_action :set_analysis, only: [:show, :new, :update, :destroy]
 
   # GET /analyses
   # GET /analyses.json
@@ -17,7 +17,7 @@ class AnalysesController < ApplicationController
     @analysis = Analysis.new
   end
 
-  # GET /analyses/1/edit
+  # GET /analyses/1/new
   def edit
   end
 
@@ -45,7 +45,7 @@ class AnalysesController < ApplicationController
         format.html { redirect_to @analysis, notice: 'Analysis was successfully updated.' }
         format.json { render :show, status: :ok, location: @analysis }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @analysis.errors, status: :unprocessable_entity }
       end
     end

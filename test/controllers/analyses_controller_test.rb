@@ -28,7 +28,7 @@ class AnalysesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should get new" do
     get edit_analysis_url(@analysis)
     assert_response :success
   end

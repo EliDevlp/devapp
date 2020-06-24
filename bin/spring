@@ -1,4 +1,4 @@
-#!/usr/bins/env ruby
+#!/usr/units/env ruby
 
 # This file loads Spring without using Bundler, in order to be fast.
 # It gets overwritten when you run the `spring binstub` command.

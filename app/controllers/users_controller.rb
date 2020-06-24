@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :new, :update, :destroy]
   before_action :set_user_id_and_analysis, only: [ :analysis_show, :analysis_edit, :analysis_update]
 
   # GET /users
@@ -17,15 +17,12 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @analysis = @user.build_analysis
-    4.times do
-      @user.bins.build
-    end
   end
 
 
   def analysis_show
     @analysis = @user.analysis
-    @bins = @user.bins
+    @units = @user.units
   end
 
   def analysis_edit
@@ -46,7 +43,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
+  # GET /users/1/new
   def edit
   end
 
@@ -55,10 +52,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @analysis = @user.build_analysis(num1:"0", num2:"0")
-    @user.bins.build(colour: "red", quantity: 0)
-    @user.bins.build(colour: "green", quantity: 0)
-    @user.bins.build(colour: "blue", quantity: 0)
-    @user.bins.build(colour: "yellow", quantity: 0)
+
 
     respond_to do |format|
       if @user.save && @analysis.save
@@ -81,7 +75,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

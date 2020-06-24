@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     get "/analysis_show", to: "users#analysis_show"
     get "/analysis_edit", to: "users#analysis_edit"
     patch "/analysis_edit", to: "users#analysis_update"
-    resources :bins, only: [:edit, :update, :destroy]
-    patch "/users/:user_id/bins/:id", to: "bins#update"
+    resources :units, only: [:new, :create, :update, :edit, :destroy]
+
 
   end
   get "/signup", to: "users#new"

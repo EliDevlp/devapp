@@ -1,0 +1,38 @@
+<%= form_with(model: [@user, @unit], local: true) do |form| %>
+  <% if @unit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @unit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :dwelling_type %>
+    <%= form.text_field :dwelling_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floor_area %>
+    <%= form.number_field :floor_area %>
+  </div>
+
+  <div class="field">
+      <%= form.label :number_of_dwellings %>
+      <%= form.number_field :number_of_dwellings %>
+    </div>
+
+ <div class="field">
+     <%= form.label :price_per_unit_area %>
+     <%= form.number_field :price_per_unit_area %>
+ </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
